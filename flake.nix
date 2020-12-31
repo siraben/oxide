@@ -7,7 +7,7 @@
     flake = false;
   };
 
-  outputs = { self, nixpkgs, nix-inclusive, ... }: {
+  outputs = { self, nixpkgs, nix-inclusive, flake-compat }: {
 
     packages.x86_64-linux.oxide = (import nixpkgs { system = "x86_64-linux"; }).callPackage ./oxide.nix {
       inherit (nix-inclusive.lib) inclusive;
