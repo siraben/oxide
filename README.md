@@ -18,10 +18,9 @@ Here is a video of it in action:
 
 Install the reMarkable toolchain and then run `make release`. It will produce a folder named `release` containing all the output.
 
-### Nix flake
-Works on x86_64-linux or macOS with
-[linuxkit-nix](https://github.com/nix-community/linuxkit-nix).
+### Nix
+Works on x86_64-linux or macOS with [linuxkit-nix](https://github.com/nix-community/linuxkit-nix).  It is recommended to use the [nix-remarkable cache](https://nix-remarkable.cachix.org).
 
 ```ShellSession
-$ nix build
+$ nix build github:Eeems/oxide#oxide
 ```
