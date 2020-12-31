@@ -5,7 +5,7 @@ stdenv.mkDerivation {
   
   nativeBuildInputs = [ qt512.full remarkable-toolchain ];
 
-  src = inclusive ./. [
+  src = inclusive.lib.inclusive ./. [
     ./Makefile
     ./applications
     ./assets

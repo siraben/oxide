@@ -7,21 +7,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2.3.1
+      with:
+          # Nix Flakes doesn't work on shallow clones
+          fetch-depth: 0
     - uses: cachix/install-nix-action@v12
       with:
-        nix_path: nixpkgs=channel:nixos-unstable
+        install_url: https://github.com/numtide/nix-flakes-installer/releases/download/nix-2.4pre20201221_9fab14a/install
+        extra_nix_config: |
+          experimental-features = nix-command flakes
     - uses: cachix/cachix-action@v8
       with:
         name: nix-remarkable
         signingKey: '${{ secrets.CACHIX_SIGNING_KEY }}'
     - name: Build
-      run: nix-build --argstr system 'x86_64-linux'
+      run: nix build
       timeout-minutes: 15
-    - name: 
+    - name: Move result to oxide folder
       run: mkdir -p oxide && cp -a result/. oxide
     - name: Upload artifacts
       uses: actions/upload-artifact@v2
       with:
         name: oxide
         path: oxide
-
