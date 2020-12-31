@@ -20,7 +20,7 @@ jobs:
         name: nix-remarkable
         signingKey: '${{ secrets.CACHIX_SIGNING_KEY }}'
     - name: Build
-      run: nix build
+      run: nix build -L
       timeout-minutes: 15
     - name: Move result to oxide folder
       run: mkdir -p oxide && cp -a result/. oxide
