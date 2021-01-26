@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -eux
 
-RM=192.168.0.100
+: ${RM:=192.168.0.100}
 
 res=$(nix-build --no-out-link --argstr system 'x86_64-linux')
 ssh root@$RM "systemctl disable --now tarnish"

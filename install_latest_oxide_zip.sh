@@ -2,7 +2,7 @@
 set -eux
 
 echo "make sure to have oxide.zip here"
-RM=192.168.0.100
+: ${RM:=192.168.0.100}
 res=oxide
 unzip oxide.zip -d oxide
 ssh root@$RM "systemctl disable --now tarnish"
